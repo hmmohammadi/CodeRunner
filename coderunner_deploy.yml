@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coderunner-deployment
+  labels:
+    app: coderunner
+spec:
+  template:
+    metadata:
+      labels:
+        app: coderunner
+    spec:
+      containers:
+      - image: trampgeek/jobeinabox:latest
+        name: coderunner-pod
+        ports:
+          - containerPort: 80
+            name: coderunner-http
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coderunner
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coderunner-service
+spec:
+  externalIPs:
+  - 000.000.000.000 # YOUR IP Address
+  externalTrafficPolicy: Cluster
+  selector:
+    app: coderunner
+  ports:
+    - name: coderunnerport
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31222 
+  type: NodePort
