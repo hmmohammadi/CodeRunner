@@ -3,7 +3,7 @@ CodeRunner is a free open-source question-type plug-in for Moodle that can run p
 
 
 ## Information for Cloning
-* clone [repo](https://github.com/hmmohammadi/CodeRunner.git) on host
+* Clone [repo](https://github.com/hmmohammadi/CodeRunner.git) on host
 ```console 
 $ cd
 $ git clone https://github.com/hmmohammadi/CodeRunner.git
